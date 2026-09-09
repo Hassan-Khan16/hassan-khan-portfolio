@@ -11,7 +11,7 @@ const headingVariants = cva('text-foreground font-sans', {
       section:
         'm-0 max-w-[800px] text-[clamp(2.6rem,5vw,5rem)] max-[640px]:text-[2.65rem] leading-[1.05] tracking-[-0.055em] font-semibold',
       contact:
-        'block text-[clamp(3rem,7vw,7rem)] leading-[1.05] tracking-[-0.065em] font-semibold text-primary-foreground',
+        'block text-[clamp(2rem,5vw,5rem)] leading-[1.05] tracking-[-0.065em] font-semibold text-primary-foreground',
       page:
         'max-w-[900px] my-4 text-[clamp(2.8rem,6vw,5.6rem)] leading-[0.98] tracking-[-0.06em] font-semibold',
       card: 'm-0 mb-3 text-[28px] tracking-[-0.04em] font-semibold',

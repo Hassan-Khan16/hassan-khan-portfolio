@@ -33,7 +33,7 @@ export function Contact() {
             <Text variant="eyebrowOnPrimary" as="span" className="block">
               05 / Contact
             </Text>
-            <div className="flex flex-col items-center gap-10">
+            <div className="flex flex-col items-center gap-8">
               <Heading variant="contact" className="block">
                 Have a project in mind?
               </Heading>
