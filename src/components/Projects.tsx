@@ -27,7 +27,7 @@ export function Projects() {
     <Section tone="surface" id="projects">
       <Container>
         <SectionHeading
-          eyebrow="04 / Selected work"
+          eyebrow="04 / Production work"
           title="Products, not just projects."
           description="A selection of platforms I've helped shape, ship, and scale."
         />

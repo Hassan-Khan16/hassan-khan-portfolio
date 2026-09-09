@@ -26,15 +26,17 @@ export function ProjectPage() {
   return (
     <article className="min-h-[70svh] py-[140px] pb-20 max-[640px]:pt-[120px]">
       <Container>
-        <Button
-          variant="link"
-          className="mb-9 inline-flex items-center gap-2 font-mono text-[12px] font-medium text-muted-foreground hover:text-primary"
-          asChild
-        >
-          <Link to="/#projects">
-            <ArrowLeft size={16} /> Back to work
-          </Link>
-        </Button>
+        <div>
+          <Button
+            variant="link"
+            className="mb-9 inline-flex items-center gap-2 font-mono text-[12px] font-medium text-muted-foreground hover:text-primary"
+            asChild
+          >
+            <Link to="/#projects">
+              <ArrowLeft size={16} /> Back to work
+            </Link>
+          </Button>
+        </div>
         <Text variant="eyebrow">{project.type}</Text>
         <Heading variant="page">{project.name}</Heading>
         <Text variant="projectLead">{project.description}</Text>
