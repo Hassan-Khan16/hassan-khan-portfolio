@@ -1,29 +1,33 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
-import { motion } from 'motion/react'
-import { navItems, profile } from '../data/content'
+import { navItems, profile } from '@/data/content'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { setActiveSection, setMobileNavOpen } from '@/store/uiSlice'
+import { Button } from '@/components/ui/button'
+import { Sheet, SheetContent } from '@/components/ui/sheet'
 
 export function Header() {
-  const [open, setOpen] = useState(false)
-  const [active, setActive] = useState('')
+  const dispatch = useAppDispatch()
+  const open = useAppSelector((state) => state.ui.mobileNavOpen)
+  const active = useAppSelector((state) => state.ui.activeSection)
   const location = useLocation()
   const onHome = location.pathname === '/'
 
   useEffect(() => {
-    setOpen(false)
-  }, [location.pathname])
+    dispatch(setMobileNavOpen(false))
+  }, [location.pathname, dispatch])
 
   useEffect(() => {
     if (!onHome) {
-      setActive(location.pathname.startsWith('/projects/') ? 'projects' : '')
+      dispatch(setActiveSection(location.pathname.startsWith('/projects/') ? 'projects' : ''))
       return
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.find((entry) => entry.isIntersecting)
-        if (visible) setActive(visible.target.id)
+        if (visible) dispatch(setActiveSection(visible.target.id))
       },
       { rootMargin: '-30% 0px -60%', threshold: 0 },
     )
@@ -32,7 +36,7 @@ export function Header() {
       if (element) observer.observe(element)
     })
     return () => observer.disconnect()
-  }, [onHome, location.pathname])
+  }, [onHome, location.pathname, dispatch])
 
   const hrefFor = (item: string) => (onHome ? `#${item}` : `/#${item}`)
 
@@ -48,32 +52,36 @@ export function Header() {
           </a>
         ))}
       </nav>
-      <a className="header-cta" href={`mailto:${profile.email}`}>
-        Let's talk <ArrowUpRight size={15} />
-      </a>
-      <button
+      <Button variant="cta" className="header-cta" asChild>
+        <a href={`mailto:${profile.email}`}>
+          Let's talk <ArrowUpRight size={15} />
+        </a>
+      </Button>
+      <Button
         className="menu-button"
+        variant="icon"
         type="button"
         aria-label="Toggle navigation"
         aria-expanded={open}
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => dispatch(setMobileNavOpen(!open))}
       >
         {open ? <X /> : <Menu />}
-      </button>
-      {open && (
-        <motion.nav
-          className="mobile-nav"
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          aria-label="Mobile navigation"
-        >
-          {navItems.map((item) => (
-            <a href={hrefFor(item)} key={item} onClick={() => setOpen(false)}>
-              {item}
-            </a>
-          ))}
-        </motion.nav>
-      )}
+      </Button>
+      <Sheet open={open} onOpenChange={(value) => dispatch(setMobileNavOpen(value))}>
+        <SheetContent className="mobile-nav-sheet" side="top">
+          <nav aria-label="Mobile navigation">
+            {navItems.map((item) => (
+              <a
+                href={hrefFor(item)}
+                key={item}
+                onClick={() => dispatch(setMobileNavOpen(false))}
+              >
+                {item}
+              </a>
+            ))}
+          </nav>
+        </SheetContent>
+      </Sheet>
     </header>
   )
 }

@@ -2,6 +2,7 @@ import { ArrowDown, Mail, MapPin } from 'lucide-react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import portrait from '../assets/portrait.jpg'
 import { profile } from '../data/content'
+import { Button } from '@/components/ui/button'
 import { GithubIcon, LinkedinIcon } from './Icons'
 
 export function Hero() {
@@ -49,12 +50,16 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <a className="button button-primary" href="#projects">
-                Explore my work <ArrowDown size={17} />
-              </a>
-              <a className="button button-ghost" href={`mailto:${profile.email}`}>
-                <Mail size={17} /> Get in touch
-              </a>
+              <Button variant="default" className="button button-primary" asChild>
+                <a href="#projects">
+                  Explore my work <ArrowDown size={17} />
+                </a>
+              </Button>
+              <Button variant="ghost" className="button button-ghost" asChild>
+                <a href={`mailto:${profile.email}`}>
+                  <Mail size={17} /> Get in touch
+                </a>
+              </Button>
             </motion.div>
           </div>
           <motion.figure

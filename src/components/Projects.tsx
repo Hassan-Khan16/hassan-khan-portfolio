@@ -1,16 +1,21 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowUpRight, ExternalLink } from 'lucide-react'
 import { motion } from 'motion/react'
-import { passionProjects, profile, projects } from '../data/content'
+import { passionProjects, profile, projects } from '@/data/content'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { setProjectFilter } from '@/store/uiSlice'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { GithubIcon } from './Icons'
 import { SectionHeading } from './SectionHeading'
 
 export function Projects() {
+  const dispatch = useAppDispatch()
+  const filter = useAppSelector((state) => state.ui.projectFilter)
   const filters = ['All', ...Array.from(new Set(projects.flatMap((project) => project.tags))).filter(
     (tag) => ['Laravel', 'Next.js', 'NestJS', 'React'].includes(tag),
   )]
-  const [filter, setFilter] = useState('All')
   const filtered = useMemo(
     () => filter === 'All' ? projects : projects.filter((project) => project.tags.includes(filter)),
     [filter],
@@ -26,14 +31,14 @@ export function Projects() {
         />
         <div className="project-filters" role="group" aria-label="Filter projects by technology">
           {filters.map((item) => (
-            <button
-              className={filter === item ? 'active' : ''}
-              type="button"
-              onClick={() => setFilter(item)}
+            <Button
               key={item}
+              type="button"
+              variant={filter === item ? 'filterActive' : 'filter'}
+              onClick={() => dispatch(setProjectFilter(item))}
             >
               {item}
-            </button>
+            </Button>
           ))}
         </div>
         <motion.div className="projects-grid" layout>
@@ -63,7 +68,9 @@ export function Projects() {
                 <h3>{project.name}</h3>
                 <p>{project.description}</p>
                 <div className="tag-list">
-                  {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                  {project.tags.map((tag) => (
+                    <Badge variant="tag" key={tag}>{tag}</Badge>
+                  ))}
                 </div>
                 <span className="project-more">View case study →</span>
               </Link>

@@ -1,17 +1,15 @@
-import { useState } from 'react'
-import { ArrowUpRight, Check, Copy, Phone } from 'lucide-react'
+import { ArrowUpRight, Check, Copy } from 'lucide-react'
 import { motion } from 'motion/react'
-import { profile } from '../data/content'
-import { reveal } from '../lib/motion'
+import { profile } from '@/data/content'
+import { reveal } from '@/lib/motion'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { copyEmail } from '@/store/thunks'
+import { Button } from '@/components/ui/button'
 import { GithubIcon, LinkedinIcon } from './Icons'
 
 export function Contact() {
-  const [copied, setCopied] = useState(false)
-  const copyEmail = async () => {
-    await navigator.clipboard.writeText(profile.email)
-    setCopied(true)
-    window.setTimeout(() => setCopied(false), 2000)
-  }
+  const dispatch = useAppDispatch()
+  const copied = useAppSelector((state) => state.ui.emailCopied)
 
   return (
     <section className="contact-section" id="contact">
@@ -29,10 +27,15 @@ export function Contact() {
           <a className="contact-email" href={`mailto:${profile.email}`}>
             {profile.email} <ArrowUpRight />
           </a>
-          <button className="copy-button" type="button" onClick={copyEmail}>
+          <Button
+            className="copy-button"
+            variant="copy"
+            type="button"
+            onClick={() => dispatch(copyEmail())}
+          >
             {copied ? <Check size={15} /> : <Copy size={15} />}
             {copied ? 'Copied' : 'Copy email'}
-          </button>
+          </Button>
         </motion.div>
         <div className="contact-details">
           <a href={profile.github} target="_blank" rel="noreferrer"><GithubIcon size={17} /> GitHub</a>

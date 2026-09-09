@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 import { skillGroups } from '../data/content'
 import { reveal } from '../lib/motion'
+import { Badge } from '@/components/ui/badge'
 import { SectionHeading } from './SectionHeading'
 
 export function Skills() {
@@ -26,7 +27,9 @@ export function Skills() {
               <span className="skill-index">0{index + 1}</span>
               <h3>{group.title}</h3>
               <div className="skill-list">
-                {group.items.map((item) => <span key={item}>{item}</span>)}
+                {group.items.map((item) => (
+                  <Badge variant="skill" key={item}>{item}</Badge>
+                ))}
               </div>
             </motion.article>
           ))}
