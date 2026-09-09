@@ -4,25 +4,25 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap transition-[transform,border-color,background,box-shadow] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap font-mono transition-[transform,border-color,background,box-shadow] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',
   {
     variants: {
       variant: {
         default:
-          'h-[50px] rounded-[10px] border border-[var(--accent)] bg-[var(--accent)] px-5 font-[500] text-[12px] font-[family-name:var(--mono)] text-[#07110d] hover:-translate-y-[3px]',
+          'h-[50px] rounded-[10px] border border-primary bg-primary px-5 text-[12px] font-medium text-primary-foreground hover:-translate-y-[3px] max-[640px]:justify-center',
         ghost:
-          'h-[50px] rounded-[10px] border border-[var(--line)] bg-transparent px-5 font-[500] text-[12px] font-[family-name:var(--mono)] text-[var(--text)] hover:-translate-y-[3px] hover:border-[var(--accent)] hover:bg-[rgba(101,245,189,0.05)]',
+          'h-[50px] rounded-[10px] border border-border bg-transparent px-5 text-[12px] font-medium text-foreground hover:-translate-y-[3px] hover:border-primary hover:bg-primary/5 max-[640px]:justify-center',
         cta:
-          'h-auto rounded-[10px] border-0 bg-[var(--accent)] px-4 py-3 font-[500] text-[12px] font-[family-name:var(--mono)] text-[#06110c] hover:-translate-y-[2px] hover:shadow-[0_8px_25px_rgba(101,245,189,0.18)]',
+          'hidden h-auto rounded-[10px] border-0 bg-primary px-4 py-3 text-[12px] font-medium text-primary-foreground hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(101,245,189,0.18)] min-[901px]:inline-flex',
         filter:
-          'h-auto rounded-[99px] border border-[var(--line)] bg-transparent px-[14px] py-[9px] font-[400] text-[10px] font-[family-name:var(--mono)] text-[var(--muted)] hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-[#06110c]',
+          'h-auto cursor-pointer rounded-[99px] border border-border bg-transparent px-[14px] py-[9px] text-[10px] font-normal text-muted-foreground hover:border-primary hover:bg-primary hover:text-primary-foreground',
         filterActive:
-          'h-auto rounded-[99px] border border-[var(--accent)] bg-[var(--accent)] px-[14px] py-[9px] font-[400] text-[10px] font-[family-name:var(--mono)] text-[#06110c]',
+          'h-auto cursor-pointer rounded-[99px] border border-primary bg-primary px-[14px] py-[9px] text-[10px] font-normal text-primary-foreground',
         copy:
-          'mx-auto mt-5 flex h-auto items-center gap-[7px] rounded-[99px] border border-[rgba(7,17,13,0.25)] bg-transparent px-3 py-2 font-[500] text-[10px] font-[family-name:var(--mono)] text-[#07110d]',
+          'mx-auto mt-5 flex h-auto cursor-pointer items-center gap-[7px] rounded-[99px] border border-primary-foreground/25 bg-transparent px-3 py-2 text-[10px] font-medium text-primary-foreground',
         icon:
-          'grid size-auto place-items-center border-0 bg-transparent p-0 text-[var(--text)]',
-        link: 'h-auto border-0 bg-transparent p-0 text-inherit',
+          'hidden size-auto place-items-center border-0 bg-transparent p-0 text-foreground max-[900px]:grid',
+        link: 'h-auto border-0 bg-transparent p-0 font-inherit text-inherit hover:text-primary',
       },
       size: {
         default: '',

@@ -46,7 +46,7 @@ function SheetContent({
         data-slot="sheet-content"
         data-side={side}
         className={cn(
-          'mobile-nav-sheet outline-none',
+          'fixed top-[88px] left-1/2 z-[96] hidden w-[min(1160px,calc(100%-32px))] -translate-x-1/2 flex-col gap-[5px] rounded-[14px] border border-border bg-card p-[15px] outline-none max-[900px]:flex',
           className,
         )}
         {...props}

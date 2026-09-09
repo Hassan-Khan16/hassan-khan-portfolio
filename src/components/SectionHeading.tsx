@@ -1,5 +1,7 @@
 import { motion } from 'motion/react'
 import { reveal } from '../lib/motion'
+import { Heading } from '@/components/ui/heading'
+import { Text } from '@/components/ui/text'
 
 export function SectionHeading({
   eyebrow,
@@ -12,16 +14,22 @@ export function SectionHeading({
 }) {
   return (
     <motion.div
-      className="section-heading"
+      className="mb-[72px] grid grid-cols-[1fr_2.4fr] max-[900px]:mb-12 max-[900px]:grid-cols-1 max-[900px]:gap-[22px] max-[640px]:mb-12"
       variants={reveal}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.6 }}
     >
-      <span className="eyebrow">{eyebrow}</span>
-      <h2>{title}</h2>
-      {description && <p>{description}</p>}
+      <Text variant="eyebrow">{eyebrow}</Text>
+      <Heading variant="section" as="h2">
+        {title}
+      </Heading>
+      {description && (
+        <Text variant="muted" className="col-start-2 mt-6 max-w-[600px] max-[900px]:col-start-1">
+          {description}
+        </Text>
+      )}
     </motion.div>
   )
 }
