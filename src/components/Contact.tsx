@@ -35,11 +35,8 @@ export function Contact() {
           </button>
         </motion.div>
         <div className="contact-details">
-          <a href={`tel:${profile.phone.replace(/\s/g, '')}`}><Phone size={16} /> {profile.phone}</a>
-          <div>
-            <a href={profile.github} target="_blank" rel="noreferrer"><GithubIcon size={17} /> GitHub</a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer"><LinkedinIcon size={17} /> LinkedIn</a>
-          </div>
+          <a href={profile.github} target="_blank" rel="noreferrer"><GithubIcon size={17} /> GitHub</a>
+          <a href={profile.linkedin} target="_blank" rel="noreferrer"><LinkedinIcon size={17} /> LinkedIn</a>
         </div>
       </div>
     </section>

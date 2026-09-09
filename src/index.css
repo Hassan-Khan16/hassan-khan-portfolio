@@ -282,10 +282,10 @@ button { font: inherit; }
   cursor: pointer; font: 500 10px var(--mono);
 }
 .contact-details {
-  display: flex; justify-content: space-between; align-items: center; margin-top: 120px; padding-top: 28px;
+  display: flex; justify-content: flex-end; align-items: center; margin-top: 120px; padding-top: 28px; gap: 20px;
   border-top: 1px solid rgba(7,17,13,.22); font: 500 11px var(--mono);
 }
-.contact-details a, .contact-details div { display: flex; align-items: center; gap: 18px; }
+.contact-details a, .contact-details div { display: flex; align-items: center; gap: 12px; }
 .contact-details div a { gap: 7px; }
 footer { padding: 24px 0; background: #06100c; color: var(--muted); font: 400 10px var(--mono); }
 footer .container { display: flex; justify-content: space-between; }
