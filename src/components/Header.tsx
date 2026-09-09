@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { navItems, profile } from '@/data/content'
 import { Button } from '@/components/ui/button'
@@ -40,9 +40,9 @@ export function Header() {
 
   return (
     <header className="fixed top-[18px] left-1/2 z-[90] flex h-[62px] w-[min(1160px,calc(100%-32px))] -translate-x-1/2 items-center justify-between rounded-2xl border border-border bg-[rgba(9,11,11,0.82)] py-0 pr-2.5 pl-5 shadow-[0_16px_50px_rgba(0,0,0,0.25)] backdrop-blur-[18px] max-[640px]:top-2.5 max-[640px]:w-[calc(100%-20px)]">
-      <Link className="text-[21px] font-extrabold tracking-[-1px]" to="/" aria-label="Back to home">
+      <a className="text-[21px] font-extrabold tracking-[-1px]" href={hrefFor('top')} aria-label="Back to home">
         HK<span className="text-primary">.</span>
-      </Link>
+      </a>
       <nav className="hidden items-center gap-2 min-[901px]:flex" aria-label="Primary navigation">
         {navItems.map((item) => (
           <a
