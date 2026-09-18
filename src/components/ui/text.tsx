@@ -16,7 +16,7 @@ const textVariants = cva('font-sans', {
       eyebrow:
         'text-primary font-mono text-[11px] font-normal uppercase tracking-[0.14em]',
       eyebrowOnPrimary:
-        'text-primary-deep font-mono text-[11px] font-normal uppercase tracking-[0.14em]',
+        'text-primary-foreground font-mono text-[11px] font-normal uppercase tracking-[0.14em]',
       label:
         'text-muted-foreground font-mono text-[10px] font-normal uppercase tracking-[0.12em]',
       caption: 'text-muted-foreground font-mono text-[10px] font-normal',

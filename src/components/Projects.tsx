@@ -71,7 +71,7 @@ export function Projects() {
                   </div>
                   <Link className="flex flex-1 flex-col text-inherit" to={`/projects/${project.slug}`}>
                     <div
-                      className="relative my-[26px] grid h-[170px] place-items-center overflow-hidden rounded-[10px] border border-border bg-[radial-gradient(circle_at_80%_20%,rgba(101,245,189,0.18),transparent_40%),var(--card)]"
+                      className="relative my-[26px] grid h-[170px] place-items-center overflow-hidden rounded-[10px] border border-border bg-[radial-gradient(circle_at_80%_20%,var(--primary-glow),transparent_40%),var(--card)]"
                       aria-hidden="true"
                     >
                       <div className="pointer-events-none absolute inset-0 bg-[length:28px_28px] bg-[linear-gradient(var(--border)_1px,transparent_1px),linear-gradient(90deg,var(--border)_1px,transparent_1px)] opacity-35" />

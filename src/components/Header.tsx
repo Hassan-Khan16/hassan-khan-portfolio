@@ -4,6 +4,7 @@ import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { navItems, profile } from '@/data/content'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent } from '@/components/ui/sheet'
+import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 import { cn } from '@/lib/utils'
 
 export function Header() {
@@ -39,7 +40,7 @@ export function Header() {
   const hrefFor = (item: string) => (onHome ? `#${item}` : `/#${item}`)
 
   return (
-    <header className="fixed top-[18px] left-1/2 z-[90] flex h-[62px] w-[min(1160px,calc(100%-32px))] -translate-x-1/2 items-center justify-between rounded-2xl border border-border bg-[rgba(9,11,11,0.82)] py-0 pr-2.5 pl-5 shadow-[0_16px_50px_rgba(0,0,0,0.25)] backdrop-blur-[18px] max-[640px]:top-2.5 max-[640px]:w-[calc(100%-20px)]">
+    <header className="fixed top-[18px] left-1/2 z-[90] flex h-[62px] w-[min(1160px,calc(100%-32px))] -translate-x-1/2 items-center justify-between rounded-2xl border border-border bg-[var(--header-bg)] py-0 pr-2.5 pl-5 shadow-[var(--header-shadow)] backdrop-blur-[18px] max-[640px]:top-2.5 max-[640px]:w-[calc(100%-20px)]">
       <a className="text-[21px] font-extrabold tracking-[-1px]" href={hrefFor('top')} aria-label="Back to home">
         HK<span className="text-primary">.</span>
       </a>
@@ -57,20 +58,23 @@ export function Header() {
           </a>
         ))}
       </nav>
-      <Button variant="cta" asChild>
-        <a href={`mailto:${profile.email}`}>
-          Let's talk <ArrowUpRight size={15} />
-        </a>
-      </Button>
-      <Button
-        variant="icon"
-        type="button"
-        aria-label="Toggle navigation"
-        aria-expanded={open}
-        onClick={() => setOpen((value) => !value)}
-      >
-        {open ? <X /> : <Menu />}
-      </Button>
+      <div className="flex items-center gap-2">
+        <ThemeSwitcher className="hidden min-[901px]:block" />
+        <Button variant="cta" asChild>
+          <a href={`mailto:${profile.email}`}>
+            Let's talk <ArrowUpRight size={15} />
+          </a>
+        </Button>
+        <Button
+          variant="icon"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded={open}
+          onClick={() => setOpen((value) => !value)}
+        >
+          {open ? <X /> : <Menu />}
+        </Button>
+      </div>
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent side="top">
           <nav aria-label="Mobile navigation">
@@ -85,6 +89,12 @@ export function Header() {
               </a>
             ))}
           </nav>
+          <div className="mt-3 border-t border-border px-[13px] pt-3 pb-1">
+            <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+              Theme
+            </p>
+            <ThemeSwitcher />
+          </div>
         </SheetContent>
       </Sheet>
     </header>

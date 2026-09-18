@@ -7,7 +7,7 @@ const headingVariants = cva('text-foreground font-sans', {
   variants: {
     variant: {
       display:
-        'max-w-[1050px] my-[30px] text-[clamp(3.2rem,7.5vw,7.2rem)] max-[640px]:text-[clamp(2.6rem,13vw,4.2rem)] leading-[0.97] tracking-[-0.065em] font-semibold [&_span]:text-transparent [&_span]:[-webkit-text-stroke:1px_rgba(238,243,239,0.45)]',
+        'max-w-[1050px] my-[30px] text-[clamp(3.2rem,7.5vw,7.2rem)] max-[640px]:text-[clamp(2.6rem,13vw,4.2rem)] leading-[0.97] tracking-[-0.065em] font-semibold [&_span]:text-transparent [&_span]:[-webkit-text-stroke:1px_var(--display-stroke)]',
       section:
         'm-0 max-w-[800px] text-[clamp(2.6rem,5vw,5rem)] max-[640px]:text-[2.65rem] leading-[1.05] tracking-[-0.055em] font-semibold',
       contact:
