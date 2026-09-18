@@ -31,7 +31,7 @@ export function Contact() {
         >
           <div className="flex flex-col items-center gap-6">
             <Text variant="eyebrowOnPrimary" as="span" className="block">
-              05 / Contact
+              06 / Contact
             </Text>
             <div className="flex flex-col items-center gap-8">
               <Heading variant="contact" className="block">

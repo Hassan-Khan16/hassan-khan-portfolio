@@ -11,7 +11,7 @@ export const profile = {
     'Software Engineer with 2+ years of experience building thoughtful, production-ready full-stack web applications with Laravel, Next.js, React, NestJS, and modern relational databases.',
 }
 
-export const navItems = ['about', 'skills', 'experience', 'projects', 'contact'] as const
+export const navItems = ['about', 'skills', 'experience', 'fyp', 'projects', 'contact'] as const
 
 export const stats = [
   { value: '2+', label: 'Years of experience' },
@@ -64,6 +64,21 @@ export type Project = {
   company: string
   overview: string
   contributions: string[]
+}
+
+export type FypArchitecturePillar = {
+  title: string
+  body: string
+}
+
+export type FypProject = Project & {
+  problem: string
+  architecture: FypArchitecturePillar[]
+  team: string
+  period: string
+  university: string
+  supervisor: string
+  pecNote: string
 }
 
 export const projects: Project[] = [
@@ -164,6 +179,54 @@ export const projects: Project[] = [
   },
 ]
 
+export const fypProject: FypProject = {
+  slug: 'smart-farm-irrigation',
+  name: 'IoT Sensors Based Smart Farm Irrigation System',
+  type: 'Final year project · PEC–FYDP',
+  description:
+    'A 2023 prototype that automates irrigation from live soil data — hardware, cloud server, ML prediction, and a Flutter control app working together.',
+  tags: ['IoT', 'NodeMCU', 'Node.js', 'MongoDB', 'Python', 'Random Forest', 'Flutter'],
+  url: 'https://github.com/Hassan-Khan16/python-farm-app-v2',
+  featured: true,
+  role: 'Co-developer',
+  company: 'Bahria University Karachi · Supervised by Engr. Majid Kaleem',
+  overview:
+    'Prototype of an IoT sensors based smart farm irrigation system (PEC–FYDP), completed in 2023 with Muhammad Moasfar Javed and Ibrahim Ahmed Shaikh under Engr. Majid Kaleem at Bahria University Karachi Campus, Department of Software Engineering. The topic came from the Pakistan Engineering Council FYP list; PEC had no supervisory or funding role. Manual irrigation in Pakistani agriculture is labour-intensive and wastes water in a country already facing a water distribution crisis — crops are lost to both under- and over-watering. The system joins four layers: soil moisture sensors on a NodeMCU driving a motor via relay; a Node.js/MongoDB central server with JWT auth, REST/WebSocket APIs, and Nginx; a Python Random Forest ML server that predicts whether to release water and for how long; and a Flutter app for registration, hardware–crop pairing, live moisture monitoring, irrigation logs, scheduling, and manual remote override. Delivery followed Agile Feature Driven Development across 19 tasks, with full software engineering documentation (SRS, design artefacts, implementation, and a test suite of 30 cases). The working prototype automates irrigation from live soil data, keeps an audit log of readings and releases, and lets farmers monitor and intervene remotely — aimed at water conservation, less manual labour, and healthier crops.',
+  contributions: [
+    'Co-built the end-to-end prototype spanning IoT hardware, central server, ML prediction service, and Flutter mobile app.',
+    'Helped design and implement the Node.js/MongoDB backend for business logic, sensor storage, JWT authentication, and REST/WebSocket endpoints behind Nginx.',
+    'Worked on the Python ML prediction server hosting a Random Forest model trained on irrigation datasets to decide whether to irrigate and for how long.',
+    'Contributed to Flutter control flows: auth, pairing hardware to a crop, real-time moisture monitoring, irrigation logs, scheduling, and remote override.',
+    'Participated in Feature Driven Development across 19 tasks with full SE documentation — SRS, design diagrams, NodeMCU/ML implementation notes, and a 30-case test suite.',
+  ],
+  problem:
+    'Manual irrigation in Pakistani agriculture is labour-intensive and wastes water in a country already facing a water distribution crisis. Crops are lost to both under- and over-watering; existing IoT products often miss user-friendliness and affordability for this market.',
+  architecture: [
+    {
+      title: 'Hardware',
+      body: 'Soil moisture sensors on a NodeMCU microcontroller drive a water motor through a relay. Readings upload periodically over WiFi.',
+    },
+    {
+      title: 'Central server',
+      body: 'Node.js with MongoDB for business logic, sensor storage, JWT auth, and REST/WebSocket endpoints behind Nginx.',
+    },
+    {
+      title: 'ML server',
+      body: 'A Python service hosting a Random Forest model that predicts whether to release water and for how long.',
+    },
+    {
+      title: 'Mobile app',
+      body: 'Flutter control centre: auth, hardware–crop pairing, live moisture, irrigation logs, scheduling, and remote override.',
+    },
+  ],
+  team: 'Muhammad Hassan Khan, Muhammad Moasfar Javed, Ibrahim Ahmed Shaikh',
+  period: '2023',
+  university: 'Bahria University Karachi Campus',
+  supervisor: 'Engr. Majid Kaleem',
+  pecNote:
+    'Topic selected from the Pakistan Engineering Council FYP list; PEC had no supervisory or funding role.',
+}
+
 export const passionProjects = [
   {
     name: 'KJobs Frontend',
@@ -176,12 +239,6 @@ export const passionProjects = [
     description: 'API and server for KJobs, pairing with the frontend to power listings and workflows.',
     language: 'Backend',
     url: 'https://github.com/Hassan-Khan16/kjobs-backend',
-  },
-  {
-    name: 'Smart Farm Water Irrigation AI Model and Server on Python',
-    description: 'Final-year project module for PEC: an AI model and Python server for smart farm water irrigation.',
-    language: 'Python · FYP',
-    url: 'https://github.com/Hassan-Khan16/python-farm-app-v2',
   },
   {
     name: 'React Tenzies',
@@ -234,5 +291,6 @@ export const certifications = [
 ]
 
 export function getProjectBySlug(slug: string) {
+  if (slug === fypProject.slug) return fypProject
   return projects.find((project) => project.slug === slug)
 }

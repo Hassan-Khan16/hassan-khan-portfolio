@@ -24,14 +24,14 @@ export function Projects() {
   )
 
   return (
-    <Section tone="surface" id="projects">
+    <Section tone="default" id="projects">
       <Container>
         <SectionHeading
-          eyebrow="04 / Production work"
+          eyebrow="05 / Production work"
           title="Products, not just projects."
           description="A selection of platforms I've helped shape, ship, and scale."
         />
-        <div className="-mt-[25px] mb-[35px] flex flex-wrap gap-2" role="group" aria-label="Filter projects by technology">
+        <div className="-mt-[25px] mb-[35px] flex flex-wrap gap-2" aria-label="Filter projects by technology">
           {filters.map((item) => (
             <Button
               key={item}

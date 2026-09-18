@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { ArrowLeft, ArrowUpRight } from 'lucide-react'
-import { getProjectBySlug, projects } from '../data/content'
+import { getProjectBySlug, fypProject, projects } from '../data/content'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
@@ -21,7 +21,11 @@ export function ProjectPage() {
     return <Navigate to="/#projects" replace />
   }
 
+  const isFyp = project.slug === fypProject.slug
   const others = projects.filter((item) => item.slug !== project.slug).slice(0, 3)
+  const backHref = isFyp ? '/#fyp' : '/#projects'
+  const backLabel = isFyp ? 'Back to FYP' : 'Back to work'
+  const externalLabel = isFyp ? 'View on GitHub' : 'Visit live site'
 
   return (
     <article className="min-h-[70svh] py-[140px] pb-20 max-[640px]:pt-[120px]">
@@ -32,8 +36,8 @@ export function ProjectPage() {
             className="mb-9 inline-flex items-center gap-2 font-mono text-[12px] font-medium text-muted-foreground hover:text-primary"
             asChild
           >
-            <Link to="/#projects">
-              <ArrowLeft size={16} /> Back to work
+            <Link to={backHref}>
+              <ArrowLeft size={16} /> {backLabel}
             </Link>
           </Button>
         </div>
@@ -46,13 +50,13 @@ export function ProjectPage() {
             <strong className="text-base">{project.role}</strong>
           </div>
           <div>
-            <Text variant="label" className="mb-1.5 block">Company</Text>
+            <Text variant="label" className="mb-1.5 block">{isFyp ? 'Context' : 'Company'}</Text>
             <strong className="text-base">{project.company}</strong>
           </div>
           {project.url && (
             <Button variant="default" asChild>
               <a href={project.url} target="_blank" rel="noreferrer">
-                Visit live site <ArrowUpRight size={16} />
+                {externalLabel} <ArrowUpRight size={16} />
               </a>
             </Button>
           )}
