@@ -22,7 +22,7 @@ const textVariants = cva('font-sans', {
       caption: 'text-muted-foreground font-mono text-[10px] font-normal',
       mono: 'text-muted-foreground font-mono text-[12px] font-normal',
       index: 'text-primary font-mono text-[10px] font-normal',
-      contactBody: 'text-[17px] text-primary-foreground/72',
+      contactBody: 'text-[17px] text-primary-foreground/82',
       projectMore: 'mt-[18px] text-primary font-mono text-[11px] font-medium',
       credentialBody: 'm-0 text-muted-foreground text-[13px]',
       credentialMeta: 'mt-1 text-muted-foreground font-mono text-[10px]',

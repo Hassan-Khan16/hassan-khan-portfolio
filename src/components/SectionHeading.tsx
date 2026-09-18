@@ -2,15 +2,18 @@ import { motion } from 'motion/react'
 import { reveal } from '../lib/motion'
 import { Heading } from '@/components/ui/heading'
 import { Text } from '@/components/ui/text'
+import { cn } from '@/lib/utils'
 
 export function SectionHeading({
   eyebrow,
   title,
   description,
+  descriptionClassName,
 }: {
   eyebrow: string
   title: string
   description?: string
+  descriptionClassName?: string
 }) {
   return (
     <motion.div
@@ -26,7 +29,13 @@ export function SectionHeading({
         {title}
       </Heading>
       {description && (
-        <Text variant="muted" className="col-start-2 mt-6 max-w-[600px] max-[900px]:col-start-1">
+        <Text
+          variant="muted"
+          className={cn(
+            'col-start-2 mt-6 max-w-[600px] max-[900px]:col-start-1',
+            descriptionClassName,
+          )}
+        >
           {description}
         </Text>
       )}
