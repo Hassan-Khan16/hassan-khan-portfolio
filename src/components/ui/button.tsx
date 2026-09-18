@@ -13,7 +13,7 @@ const buttonVariants = cva(
         ghost:
           'h-[50px] rounded-[10px] border border-border bg-transparent px-5 text-[12px] font-medium text-foreground hover:-translate-y-[3px] hover:border-primary hover:bg-primary/5 max-[640px]:justify-center',
         cta:
-          'hidden h-auto rounded-[10px] border-0 bg-primary px-4 py-3 text-[12px] font-medium text-primary-foreground hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(101,245,189,0.18)] min-[901px]:inline-flex',
+          'hidden h-auto shrink-0 rounded-[10px] border-0 bg-primary px-4 py-3 text-[12px] font-medium text-primary-foreground hover:-translate-y-0.5 hover:shadow-[0_8px_25px_var(--primary-glow)] min-[901px]:inline-flex',
         filter:
           'h-auto cursor-pointer rounded-[99px] border border-border bg-transparent px-[14px] py-[9px] text-[10px] font-normal text-muted-foreground hover:border-primary hover:bg-primary hover:text-primary-foreground',
         filterActive:
@@ -23,6 +23,8 @@ const buttonVariants = cva(
         icon:
           'hidden size-auto place-items-center border-0 bg-transparent p-0 text-foreground max-[900px]:grid',
         link: 'h-auto border-0 bg-transparent p-0 font-inherit text-inherit hover:text-primary',
+        theme:
+          'grid size-10 shrink-0 place-items-center rounded-[10px] border border-border bg-transparent p-0 text-foreground hover:border-primary hover:bg-primary/5',
       },
       size: {
         default: '',

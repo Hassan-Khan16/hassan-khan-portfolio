@@ -23,7 +23,7 @@ export function Hero() {
         aria-hidden="true"
       />
       <motion.div
-        className="pointer-events-none absolute top-[110px] -right-[120px] size-[540px] rounded-full bg-[rgba(49,219,153,0.1)] blur-[90px]"
+        className="pointer-events-none absolute top-[110px] -right-[120px] size-[540px] rounded-full bg-[var(--orb)] blur-[90px]"
         style={{ y: heroY }}
         aria-hidden="true"
       />
@@ -36,7 +36,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
             >
-              <span className="size-[7px] animate-[pulse-dot_2s_ease_infinite] rounded-full bg-primary shadow-[0_0_0_5px_rgba(101,245,189,0.09),0_0_18px_var(--primary)]" />
+              <span className="size-[7px] animate-[pulse-dot_2s_ease_infinite] rounded-full bg-primary shadow-[0_0_0_5px_var(--pulse-ring),0_0_18px_var(--primary)]" />
               Available for meaningful projects
             </motion.div>
             <motion.div
@@ -79,7 +79,7 @@ export function Hero() {
             </motion.div>
           </div>
           <motion.figure
-            className="relative m-0 rounded-[28px] border border-border bg-[rgba(16,19,19,0.7)] p-3 shadow-[0_30px_80px_rgba(0,0,0,0.35)] max-[900px]:max-w-[420px]"
+            className="relative m-0 rounded-[28px] border border-border bg-[var(--portrait-bg)] p-3 shadow-[var(--portrait-shadow)] max-[900px]:max-w-[420px]"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25 }}

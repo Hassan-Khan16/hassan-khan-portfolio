@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="mint">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -10,6 +10,19 @@
     <meta property="og:description" content="Full-stack software engineer specializing in Laravel, Next.js, React, and NestJS." />
     <meta property="og:type" content="website" />
     <title>Hassan Khan — Software Engineer</title>
+    <script>
+      (function () {
+        try {
+          var key = 'hk-theme';
+          var stored = localStorage.getItem(key);
+          var allowed = { mint: 1, dawn: 1, paper: 1, bloom: 1 };
+          var theme = allowed[stored] ? stored : 'mint';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'mint');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
