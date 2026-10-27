@@ -262,17 +262,11 @@ export const education = {
 
 export const certifications = [
   {
-    name: 'Get the most out of Jira',
-    issuer: 'Atlassian',
-    date: 'Credential ID 351923122',
-    skills: 'Jira',
-  },
-  {
-    name: 'Build a Full Website using WordPress',
-    issuer: 'Coursera Project Network',
-    date: 'September 2023',
-    skills: 'WordPress',
-    url: 'https://www.coursera.org/account/accomplishments/verify/VCLHWFUCZDXX',
+    name: 'AI Python for Beginners',
+    issuer: 'DeepLearning.AI',
+    date: 'October 2026',
+    skills: 'Python, Artificial Intelligence',
+    url: 'https://coursera.org/share/39d1db0e1967b46affe6aa0d669548d0',
   },
   {
     name: 'HTML, CSS, and JavaScript for Web Developers',
@@ -287,6 +281,12 @@ export const certifications = [
     date: 'October 2022',
     skills: 'C#, Unity',
     url: 'https://www.coursera.org/account/accomplishments/verify/QVH2SSLWY4C9',
+  },
+  {
+    name: 'Get the most out of Jira',
+    issuer: 'Atlassian',
+    date: 'Credential ID 351923122',
+    skills: 'Jira',
   },
 ]
 
