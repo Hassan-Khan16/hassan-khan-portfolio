@@ -1,7 +1,8 @@
-import { Code2, GraduationCap } from 'lucide-react'
+import { Code2, GraduationCap, Languages } from 'lucide-react'
 import { motion } from 'motion/react'
 import aboutArt from '../assets/about-art.jpg'
-import { certifications, education, profile, stats } from '../data/content'
+import { certifications, education, fileById, profile, stats } from '../data/content'
+import { DocumentDownload } from './DocumentDownload'
 import { reveal } from '../lib/motion'
 import { Card } from '@/components/ui/card'
 import { Container } from '@/components/ui/container'
@@ -65,6 +66,33 @@ export function About() {
                   <Text variant="credentialBody">
                     {education.institution} · {education.period}
                   </Text>
+                  <DocumentDownload
+                    className="mt-3 h-10 px-4"
+                    href={fileById('pec').href}
+                    fileName={fileById('pec').fileName}
+                    label={fileById('pec').label}
+                  />
+                </div>
+              </Card>
+            </motion.div>
+            <motion.div
+              variants={reveal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <Card variant="credential">
+                <Languages />
+                <div>
+                  <Text variant="label">Credential</Text>
+                  <Heading variant="credential">{fileById('english').label}</Heading>
+                  <Text variant="credentialBody">{fileById('english').detail}</Text>
+                  <DocumentDownload
+                    className="mt-3 h-10 px-4"
+                    href={fileById('english').href}
+                    fileName={fileById('english').fileName}
+                    label="Download"
+                  />
                 </div>
               </Card>
             </motion.div>

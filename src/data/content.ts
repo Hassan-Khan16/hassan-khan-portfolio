@@ -11,6 +11,68 @@ export const profile = {
     'Software Engineer with 2+ years of experience building thoughtful, production-ready full-stack web applications with Laravel, Next.js, React, NestJS, and modern relational databases.',
 }
 
+export type PortfolioFile = {
+  id: string
+  label: string
+  href: string
+  fileName: string
+  group: 'Resumes' | 'Certificates'
+  detail: string
+}
+
+export const portfolioFiles: PortfolioFile[] = [
+  {
+    id: 'europass',
+    label: 'Europass CV',
+    href: '/Muhammad-Hassan-Khan-Europass.pdf',
+    fileName: 'Muhammad-Hassan-Khan-Europass.pdf',
+    group: 'Resumes',
+    detail: 'Europass curriculum vitae',
+  },
+  {
+    id: 'cv',
+    label: 'CV',
+    href: '/Muhammad_Hassan_Khan_CV_Oct.pdf',
+    fileName: 'Muhammad_Hassan_Khan_CV.pdf',
+    group: 'Resumes',
+    detail: 'Curriculum vitae',
+  },
+  {
+    id: 'english',
+    label: 'English proficiency',
+    href: '/English-Proficiency-Muhammad-Hassan-Khan.pdf',
+    fileName: 'English-Proficiency-Muhammad-Hassan-Khan.pdf',
+    group: 'Certificates',
+    detail: 'English language certificate',
+  },
+  {
+    id: 'internship',
+    label: 'Internship certificate',
+    href: '/Internship%20certificate.pdf',
+    fileName: 'Internship certificate.pdf',
+    group: 'Certificates',
+    detail: 'SoftFit Technologies',
+  },
+  {
+    id: 'pec',
+    label: 'PEC engineer certificate',
+    href: '/PEC-Certificate.pdf',
+    fileName: 'PEC-Certificate.pdf',
+    group: 'Certificates',
+    detail: 'Bahria University Karachi',
+  },
+]
+
+export const resumes = portfolioFiles.filter((file) => file.group === 'Resumes')
+
+export const fileGroups = ['Resumes', 'Certificates'] as const
+
+export function fileById(id: string) {
+  const file = portfolioFiles.find((item) => item.id === id)
+  if (!file) throw new Error(`Unknown portfolio file: ${id}`)
+  return file
+}
+
 export const navItems = ['about', 'skills', 'experience', 'fyp', 'projects', 'contact'] as const
 
 export const stats = [
@@ -26,7 +88,14 @@ export const skillGroups = [
   { title: 'Tools & Platforms', items: ['Git', 'Stripe', 'REST APIs', 'Jira', 'Spatie Permission', 'Tiptap Editor'] },
 ]
 
-export const experience = [
+export const experience: {
+  company: string
+  role: string
+  period: string
+  description: string
+  highlights: string[]
+  fileId?: string
+}[] = [
   {
     company: 'V2F Solutions',
     role: 'Software Engineer',
@@ -49,6 +118,7 @@ export const experience = [
       'Implemented CRUD workflows and database-backed functionality.',
       'Resolved bugs and improved interface consistency across applications.',
     ],
+    fileId: 'internship',
   },
 ]
 

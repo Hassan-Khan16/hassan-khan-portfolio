@@ -1,6 +1,7 @@
 import { BriefcaseBusiness } from 'lucide-react'
 import { motion } from 'motion/react'
-import { experience } from '../data/content'
+import { experience, fileById } from '../data/content'
+import { DocumentDownload } from './DocumentDownload'
 import { reveal } from '../lib/motion'
 import { Container } from '@/components/ui/container'
 import { Heading } from '@/components/ui/heading'
@@ -56,6 +57,14 @@ export function Experience() {
                     </li>
                   ))}
                 </ul>
+                {item.fileId && (
+                  <DocumentDownload
+                    className="mt-5 h-10 px-4"
+                    href={fileById(item.fileId).href}
+                    fileName={fileById(item.fileId).fileName}
+                    label={fileById(item.fileId).label}
+                  />
+                )}
               </div>
             </motion.article>
           ))}

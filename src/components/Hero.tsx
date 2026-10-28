@@ -1,7 +1,7 @@
-import { ArrowDown, Mail, MapPin } from 'lucide-react'
+import { ArrowDown, Download, Mail, MapPin } from 'lucide-react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import portrait from '../assets/portrait.jpg'
-import { profile } from '../data/content'
+import { profile, resumes } from '../data/content'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
 import { Heading } from '@/components/ui/heading'
@@ -61,7 +61,7 @@ export function Hero() {
               </Text>
             </motion.div>
             <motion.div
-              className="mt-[38px] flex items-center gap-3 max-[640px]:flex-col max-[640px]:items-stretch"
+              className="mt-[38px] flex flex-wrap items-center gap-3 max-[640px]:flex-col max-[640px]:items-stretch"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -76,6 +76,13 @@ export function Hero() {
                   <Mail size={17} /> Get in touch
                 </a>
               </Button>
+              {resumes.map((resume) => (
+                <Button variant="ghost" asChild key={resume.href}>
+                  <a href={resume.href} download={resume.fileName}>
+                    <Download size={17} /> {resume.label}
+                  </a>
+                </Button>
+              ))}
             </motion.div>
           </div>
           <motion.figure
