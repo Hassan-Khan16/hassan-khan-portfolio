@@ -2,6 +2,7 @@ import { BriefcaseBusiness } from 'lucide-react'
 import { motion } from 'motion/react'
 import { experience, fileById } from '../data/content'
 import { DocumentDownload } from './DocumentDownload'
+import { TenureCounter } from './TenureCounter'
 import { reveal } from '../lib/motion'
 import { Container } from '@/components/ui/container'
 import { Heading } from '@/components/ui/heading'
@@ -18,6 +19,7 @@ export function Experience() {
           title="Building for the real world."
           description="Professional experience delivering production software and measurable product value."
         />
+        <TenureCounter />
         <div className="relative">
           <div
             className="absolute top-0 bottom-0 left-1/4 w-px bg-border max-[900px]:left-0"

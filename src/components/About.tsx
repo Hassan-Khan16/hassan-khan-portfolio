@@ -3,6 +3,7 @@ import { motion } from 'motion/react'
 import aboutArt from '../assets/about-art.jpg'
 import { certifications, education, fileById, profile, stats } from '../data/content'
 import { DocumentDownload } from './DocumentDownload'
+import { useTotalTenure } from './TenureCounter'
 import { reveal } from '../lib/motion'
 import { Card } from '@/components/ui/card'
 import { Container } from '@/components/ui/container'
@@ -12,6 +13,8 @@ import { Text } from '@/components/ui/text'
 import { SectionHeading } from './SectionHeading'
 
 export function About() {
+  const { years } = useTotalTenure()
+
   return (
     <Section tone="surface" id="about">
       <Container>
@@ -25,7 +28,7 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Text variant="bodyLg">{profile.summary}</Text>
+            <Text variant="bodyLg">{profile.summary.replace('{years}', String(years))}</Text>
             <Text variant="muted" className="text-[16px]">
               I enjoy working at the intersection of product, design, and engineering—building
               systems that are maintainable behind the scenes and effortless in the browser.
@@ -42,7 +45,7 @@ export function About() {
               <motion.div variants={reveal} key={stat.label}>
                 <Card variant="stat">
                   <strong className="block text-[clamp(2rem,4vw,3.5rem)] font-bold tracking-[-0.06em] text-primary">
-                    {stat.value}
+                    {stat.value === '{years}' ? `${years}+` : stat.value}
                   </strong>
                   <Text variant="statLabel">{stat.label}</Text>
                 </Card>

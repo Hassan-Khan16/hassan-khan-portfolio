@@ -8,7 +8,7 @@ export const profile = {
   github: 'https://github.com/Hassan-Khan16',
   linkedin: 'https://linkedin.com/in/hassan-khan-81b832193',
   summary:
-    'Software Engineer with 2+ years of experience building thoughtful, production-ready full-stack web applications with Laravel, Next.js, React, NestJS, and modern relational databases.',
+    'Software Engineer with {years}+ years of experience building thoughtful, production-ready full-stack web applications with Laravel, Next.js, React, NestJS, and modern relational databases.',
 }
 
 export type PortfolioFile = {
@@ -76,7 +76,7 @@ export function fileById(id: string) {
 export const navItems = ['about', 'skills', 'experience', 'fyp', 'projects', 'contact'] as const
 
 export const stats = [
-  { value: '2+', label: 'Years of experience' },
+  { value: '{years}', label: 'Years of experience' },
   { value: '5', label: 'Production platforms' },
   { value: '28', label: 'Public repositories' },
 ]
@@ -92,6 +92,8 @@ export const experience: {
   company: string
   role: string
   period: string
+  start: string
+  end: string | null
   description: string
   highlights: string[]
   fileId?: string
@@ -100,6 +102,8 @@ export const experience: {
     company: 'V2F Solutions',
     role: 'Software Engineer',
     period: 'Jul 2024 — Present',
+    start: '2024-07-01',
+    end: null,
     description:
       'Developing full-stack production applications across Laravel, Next.js, React, and MySQL.',
     highlights: [
@@ -112,6 +116,8 @@ export const experience: {
     company: 'SoftFit Technologies',
     role: 'ASP.NET Intern',
     period: 'Aug 2023 — Oct 2023',
+    start: '2023-08-01',
+    end: '2023-10-31',
     description:
       'Developed ASP.NET MVC applications and strengthened existing product experiences.',
     highlights: [
