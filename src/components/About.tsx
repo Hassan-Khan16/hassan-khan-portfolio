@@ -1,4 +1,4 @@
-import { Code2, GraduationCap, Languages } from 'lucide-react'
+import { ArrowUpRight, Code2, GraduationCap, Languages } from 'lucide-react'
 import { motion } from 'motion/react'
 import aboutArt from '../assets/about-art.jpg'
 import { certifications, education, fileById, profile, stats } from '../data/content'
@@ -108,19 +108,21 @@ export function About() {
                   <Code2 />
                   <div>
                     <Text variant="label">Certification</Text>
-                    <Heading variant="credential">
-                      {item.url ? (
-                        <a href={item.url} target="_blank" rel="noreferrer">
-                          {item.name}
-                        </a>
-                      ) : (
-                        item.name
-                      )}
-                    </Heading>
+                    <Heading variant="credential">{item.name}</Heading>
                     <Text variant="credentialBody">
                       {item.issuer} · {item.date}
                     </Text>
                     {item.skills && <Text variant="credentialMeta">{item.skills}</Text>}
+                    {item.url && (
+                      <a
+                        className="mt-2 inline-flex items-center gap-1.5 font-mono text-[11px] font-medium text-primary"
+                        href={item.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        View certificate <ArrowUpRight size={14} />
+                      </a>
+                    )}
                   </div>
                 </Card>
               </motion.div>

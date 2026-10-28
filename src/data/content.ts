@@ -55,7 +55,7 @@ export const portfolioFiles: PortfolioFile[] = [
   },
   {
     id: 'pec',
-    label: 'PEC engineer certificate',
+    label: 'PEC Engineer Certificate',
     href: '/PEC-Certificate.pdf',
     fileName: 'PEC-Certificate.pdf',
     group: 'Certificates',
