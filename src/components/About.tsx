@@ -12,6 +12,39 @@ import { Section } from '@/components/ui/section'
 import { Text } from '@/components/ui/text'
 import { SectionHeading } from './SectionHeading'
 
+function CertificationCard({ item }: { item: (typeof certifications)[number] }) {
+  return (
+    <motion.div
+      variants={reveal}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
+      <Card variant="credential" className="p-5">
+        <Code2 />
+        <div>
+          <Text variant="label">Certification</Text>
+          <Heading variant="credential">{item.name}</Heading>
+          <Text variant="credentialBody">
+            {item.issuer} · {item.date}
+          </Text>
+          {item.skills && <Text variant="credentialMeta">{item.skills}</Text>}
+          {item.url && (
+            <a
+              className="mt-2 inline-flex items-center gap-1.5 font-mono text-[11px] font-medium text-primary"
+              href={item.url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {item.inProgress ? 'View course' : 'View certificate'} <ArrowUpRight size={14} />
+            </a>
+          )}
+        </div>
+      </Card>
+    </motion.div>
+  )
+}
+
 export function About() {
   const { years } = useTotalTenure()
 
@@ -53,15 +86,15 @@ export function About() {
             ))}
           </motion.div>
         </div>
-        <div className="mt-[70px] grid grid-cols-[minmax(0,1fr)_minmax(0,620px)] items-start gap-9 max-[900px]:mt-[50px] max-[900px]:grid-cols-1 max-[900px]:gap-10">
-          <div className="grid grid-cols-1 content-start gap-3">
+        <div className="mt-[70px] grid grid-cols-2 items-start gap-2.5 max-[900px]:mt-[50px] max-[900px]:grid-cols-1 max-[900px]:gap-10">
+          <div className="grid content-start gap-2.5">
             <motion.div
               variants={reveal}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <Card variant="credential">
+              <Card variant="credential" className="p-5">
                 <GraduationCap />
                 <div>
                   <Text variant="label">Education</Text>
@@ -84,7 +117,7 @@ export function About() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <Card variant="credential">
+              <Card variant="credential" className="p-5">
                 <Languages />
                 <div>
                   <Text variant="label">Credential</Text>
@@ -99,36 +132,8 @@ export function About() {
                 </div>
               </Card>
             </motion.div>
-            {certifications.map((item) => (
-              <motion.div
-                variants={reveal}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                key={item.name}
-              >
-                <Card variant="credential">
-                  <Code2 />
-                  <div>
-                    <Text variant="label">Certification</Text>
-                    <Heading variant="credential">{item.name}</Heading>
-                    <Text variant="credentialBody">
-                      {item.issuer} · {item.date}
-                    </Text>
-                    {item.skills && <Text variant="credentialMeta">{item.skills}</Text>}
-                    {item.url && (
-                      <a
-                        className="mt-2 inline-flex items-center gap-1.5 font-mono text-[11px] font-medium text-primary"
-                        href={item.url}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        View certificate <ArrowUpRight size={14} />
-                      </a>
-                    )}
-                  </div>
-                </Card>
-              </motion.div>
+            {certifications.slice(0, 2).map((item) => (
+              <CertificationCard item={item} key={item.name} />
             ))}
           </div>
           <motion.figure
@@ -147,6 +152,11 @@ export function About() {
               A personal map — values, craft, and the work that keeps me going.
             </figcaption>
           </motion.figure>
+          <div className="col-span-2 grid grid-cols-2 items-start gap-2.5 max-[900px]:col-span-1 max-[900px]:grid-cols-1">
+            {certifications.slice(2).map((item) => (
+              <CertificationCard item={item} key={item.name} />
+            ))}
+          </div>
         </div>
       </Container>
     </Section>

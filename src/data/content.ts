@@ -336,7 +336,22 @@ export const education = {
   period: '2020 — 2024',
 }
 
-export const certifications = [
+export const certifications: {
+  name: string
+  issuer: string
+  date: string
+  skills?: string
+  url?: string
+  inProgress?: boolean
+}[] = [
+  {
+    name: 'Fundamentals of GIS',
+    issuer: 'University of California, Davis',
+    date: 'In progress',
+    skills: 'Geographic Information Systems (GIS)',
+    url: 'https://www.coursera.org/learn/gis',
+    inProgress: true,
+  },
   {
     name: 'AI Python for Beginners',
     issuer: 'DeepLearning.AI',
