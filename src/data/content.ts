@@ -115,9 +115,9 @@ export const experience: {
   {
     company: 'SoftFit Technologies',
     role: 'ASP.NET Intern',
-    period: 'Aug 2023 — Oct 2023',
-    start: '2023-08-01',
-    end: '2023-10-31',
+    period: '31 Jul 2023 — 11 Sep 2023',
+    start: '2023-07-31',
+    end: '2023-09-11',
     description:
       'Developed ASP.NET MVC applications and strengthened existing product experiences.',
     highlights: [
